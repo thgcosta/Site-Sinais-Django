@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    {% include 'sitesinais/partials/head.html' %}
+    <title>{% block title %}Login {% endblock %}| TiroCerto</title>
+
+</head>
+
+<body>
+    <section class="container">
+
+        {% include 'sitesinais/partials/header.html' %}
+
+        <section class="information">
+            <div class="information-hidden">
+                <div class="information-title">
+                    <h2>Acertos do Bot:</h2>
+                </div>
+                <div class="information-bar">
+                    <div class="progress">
+                        <div class="progress-in" style="width: 91.50%;"></div>
+                        <div class="porcent">91.50%</div>
+                    </div>
+                </div>
+                <div class="information-sub">
+                    <h4>9 acertos a cada 10 Jogadas</h4>
+                </div>
+            </div>
+            <div class="login-content">
+                <div class="login">
+                    <form action="{% url 'sitesinais:trial' %}">
+                        <div class="text-input">Login:
+                            <input class="input" type="text" placeholder="Login" required>
+                        </div>
+                        <div class="text-input">Senha:
+                            <input class="input" type="password" placeholder="Senha" required>
+                        </div>
+                        <button class="btn-login" type="submit">Entrar</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        {% include 'sitesinais/partials/footer.html' %}
+
+    </section>
+</body>
+
+</html>

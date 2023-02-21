@@ -1,0 +1,20 @@
+<section class="container-header">
+    <div class="logo"><a>Tiro Certo</a></div>
+    <div class="sinais-title">
+        <h2>Sinais<span>On</span>line</h2>
+    </div>
+    {% if not apear_button %}
+        <div class="buttons">
+            <div class="btn-login"><a href="{% url 'sitesinais:trial' %}">Entrar</a></div>
+
+            {% if not apear_register %}
+                <div class="btn-register"><a href="{% url 'sitesinais:cadastro' %}">Cadastrar</a></div>
+            {% endif %}
+        </div>
+    {% else %}
+        <div class="buttons">
+            <div class="btn-register"><a href="{% url 'sitesinais:cadastro' %}">Comprar Acesso</a></div>
+        </div>
+    {% endif %}
+</section>
+<div class="row"></div>
