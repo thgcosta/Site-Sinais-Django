@@ -9,4 +9,5 @@ urlpatterns = [
     path('cadastro/', views.cadastro, name="cadastro"),
     path('my-page/', views.trial, name="trial"),
     path('confirmacao/', views.confirmacao, name="confirmacao"),
+    path('logout/', views.logout_view, name="logout"),
 ]

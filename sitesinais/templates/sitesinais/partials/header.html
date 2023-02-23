@@ -5,7 +5,9 @@
     </div>
     {% if not apear_button %}
         <div class="buttons">
-            <div class="btn-login"><a href="{% url 'sitesinais:trial' %}">Entrar</a></div>
+            {% if not apear_login %}
+            <div class="btn-login"><a class="login" href="{% url 'sitesinais:trial' %}">Entrar</a></div>
+            {% endif %}
 
             {% if not apear_register %}
                 <div class="btn-register"><a href="{% url 'sitesinais:cadastro' %}">Cadastrar</a></div>
@@ -13,8 +15,14 @@
         </div>
     {% else %}
         <div class="buttons">
-            <div class="btn-register"><a href="{% url 'sitesinais:cadastro' %}">Comprar Acesso</a></div>
+            <form action="{% url 'sitesinais:logout' %}" method="POST">{% csrf_token %}
+                <button class="btn-login logout" type="submit">Sair</button>
+            </form>
+            <div class="btn-register" style="display:None;">
+                <a href="{% url 'sitesinais:cadastro' %}">Comprar Acesso</a>
+            </div>
         </div>
+        
     {% endif %}
 </section>
 <div class="row"></div>

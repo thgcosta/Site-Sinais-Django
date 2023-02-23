@@ -107,7 +107,12 @@ body{
     font-size: 20.5px;
 }
 
-.container .container-header .buttons .btn-login a{
+.login{
+    text-decoration: none;
+    color: var(--skin-white);
+}
+
+.logout{
     text-decoration: none;
     color: var(--skin-white);
 }
@@ -228,25 +233,28 @@ body{
     text-align: center;
 }
 
-.container .information .login-content .login .text-input{
+.text-input{
     width: 95%;
     height: 40px;
-    display: flex;
-    align-items: center;
-    padding-bottom: 10%;
+    padding: 0 5% 10% 0;
     color: var(--skin-white);
     font-weight: 800;
     font-size: 20px;
 }
 
-.container .information .login-content .login .text-input .input{
+.text-input input{
     border-radius: 30px;
     width: 100%;
-    height: 90%;
+    height: 100%;
     padding-left: 15px;
     font-weight: 800;
     color: var(--bg--black-900);
-    margin-left: 10px;
+}
+
+.error-message{
+    color: var(--skin-red);
+    font-size: medium;
+    padding: 5px 0 0 15px;
 }
 
 .container .information .login-content .login .btn-login{

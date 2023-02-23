@@ -37,26 +37,7 @@
                     <div class="user-online"><span class="members red">243</span> Apostadores <span
                             class="green">Online</span>
                     </div>
-                    <form action="{% url 'sitesinais:cadastro' %}" method="POST">{% csrf_token %}
-
-                        <div class="text-input">
-                            <input name="nome" class="input" type="text" placeholder="Nome" required>
-                        </div>
-                        <div class="text-input">
-                            <input name="whatsapp" id="phone" class="input" type="tel" placeholder="Whatsapp" required>
-                        </div>
-                        <div class="text-input">
-                            <input name="email" class="input" type="email" placeholder="Email" required>
-                        </div>
-                        <div class="text-input">
-                            <input name="referal" class="input" type="text" placeholder="Codigo Indicação">
-                        </div>
-                        <div class="text-input">
-                            <input name="senha" class="input" type="password" placeholder="Senha" required>
-                        </div>
-                        <button class="btn-login" type="submit" href="">Cadastrar</button>
-                    
-                    </form>
+                    {% include 'sitesinais/partials/form-register.html' %}
                 </div>
             </div>
         </section>
