@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
@@ -11,20 +12,20 @@ def home(request):
     if request.user.is_authenticated:
         return redirect('/my-page/')
 
-    if request.method == "GET":
+    elif request.method == "GET":
         return render(request, 'sitesinais/pages/index.html',
                       {'apear_login': apear_login})
     else:
         email = request.POST.get('email')
         password = request.POST.get('password')
-
         user = authenticate(email=email, password=password)
-
         if user:
             login(request, user)
             return redirect('/my-page/')
         else:
-            return redirect('/')
+            messages.error(request, 'Email e/ou Senha inválidos')
+            return render(request, 'sitesinais/pages/index.html',
+                          {'apear_login': apear_login})
 
 
 def cadastro(request):

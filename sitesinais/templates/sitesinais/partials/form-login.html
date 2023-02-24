@@ -1,0 +1,14 @@
+<form action="{% url 'sitesinais:home' %}" method="POST">{% csrf_token %}
+    <div class="text-input">Email:
+        <input name="email" class="input" type="text" placeholder="Email" required>
+    </div>
+    <div class="text-input">Senha:
+        <input name="password" class="input" type="password" placeholder="Senha" required>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="error-message">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <button class="btn-login-home" type="submit">Entrar</button>
+</form>

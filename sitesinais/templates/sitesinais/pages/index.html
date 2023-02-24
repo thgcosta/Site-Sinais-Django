@@ -30,15 +30,7 @@
             </div>
             <div class="login-content">
                 <div class="login">
-                    <form action="{% url 'sitesinais:home' %}" method="POST">{% csrf_token %}
-                        <div class="text-input">Email:
-                            <input name="email" class="input" type="text" placeholder="Email" required>
-                        </div>
-                        <div class="text-input">Senha:
-                            <input name="password" class="input" type="password" placeholder="Senha" required>
-                        </div>
-                        <button class="btn-login" type="submit">Entrar</button>
-                    </form>
+                    {% include 'sitesinais/partials/form-login.html' %}
                 </div>
             </div>
         </section>

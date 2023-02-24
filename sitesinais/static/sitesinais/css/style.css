@@ -102,6 +102,7 @@ body{
     transition: all 0.3s e;
 }
 
+
 .container .container-header .buttons .btn-login:hover{
     box-shadow: 0 0 6px rgba(11, 11, 15, 0.6);
     font-size: 20.5px;
@@ -262,6 +263,21 @@ body{
     width: 130px;
     height: 60px;
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    font-weight: 600;
+    border: 1px solid var(--shadow-color);
+    cursor: pointer;
+}
+
+.btn-login-home{
+    background: var(--skin-red);
+    width: 130px;
+    height: 60px;
+    border-radius: 10px;
+    margin-top: 15px;
     display: flex;
     justify-content: center;
     align-items: center;

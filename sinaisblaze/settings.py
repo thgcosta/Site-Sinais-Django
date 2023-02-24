@@ -27,11 +27,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crispy_forms',
+    'django_registration',
     'sitesinais',
 ]
 
-# Crispy_forms
+# Django_registration
+
+ACCOUNT_ACTIVATION_DAYS = 2  # 48 Horas janela de ativação
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'littly.site@gmail.com'
+EMAIL_HOST_PASSWORD = 'ygwetpdgqctdyywk'
 
 
 MIDDLEWARE = [
@@ -43,6 +52,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 ROOT_URLCONF = 'sinaisblaze.urls'
 
