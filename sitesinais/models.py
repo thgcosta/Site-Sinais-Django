@@ -36,6 +36,9 @@ class UserManager(BaseUserManager):
         return user
 
 
+# Modelo de Tabela Customizada pro projeto!
+
+
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
@@ -44,14 +47,15 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     referal = models.CharField(max_length=50, blank=True, null=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
-    is_trusty = models.BooleanField(default=False)
+    confirmation = models.IntegerField(blank=True, null=True)
+    is_trusty = models.BooleanField(default=False)  # campo na tabela para fazer a confirmação do cadastro!
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     objects = UserManager()
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'last_name']
+    USERNAME_FIELD = 'email'  # email como chave primaria para login
+    REQUIRED_FIELDS = ['first_name', 'last_name']  # campos que são obrigatorios para cadastro junto com a chave primaria
 
     def __str__(self):
         return self.email

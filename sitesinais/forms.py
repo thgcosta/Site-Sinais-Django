@@ -1,6 +1,4 @@
 from django import forms
-from django.contrib.auth import authenticate
-from django.contrib.auth.forms import AuthenticationForm
 from django.forms import ModelForm, ValidationError
 
 from .models import CustomUser
@@ -34,7 +32,7 @@ class CadastroForm(ModelForm):
             'whatsapp_number': forms.NumberInput(attrs={'placeholder': 'Whatsapp'}),
             'email': forms.TextInput(attrs={'placeholder': 'Email'}),
             'referal': forms.TextInput(attrs={'placeholder': 'Codigo Indicação'}),
-            'password': forms.TextInput(attrs={'placeholder': 'Senha'})
+            'password': forms.PasswordInput(attrs={'placeholder': 'Senha'})
         }
 
     def clean_email(self):

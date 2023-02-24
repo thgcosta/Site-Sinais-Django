@@ -37,9 +37,14 @@
                     <div class="user-online"><span class="members red">243</span> Apostadores <span
                             class="green">Online</span>
                     </div>
-                    <form action="{% url 'sitesinais:trial' %}">
+                    <form action="{% url 'sitesinais:confirmacao' %}" method="POST">{% csrf_token %}
                         <div class="text-input">
-                            <input id="cod-confirm" name="cod-confirm" class="input" type="number" placeholder="Codigo enviado no Whatsapp" required>
+                            <input id="cod-confirm" name="cod-confirm" class="input" type="number" placeholder="Codigo enviado no Email" required>
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <div class="error-message">{{ message }}</div>
+                                {% endfor %}
+                            {% endif %}
                         </div>
                         <button class="btn-login" type="submit">Confirmar</button>
                     </form>
