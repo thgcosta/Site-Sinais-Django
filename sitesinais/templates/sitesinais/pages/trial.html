@@ -15,105 +15,12 @@
 
         <section class="trial-content">
             <div class="moves-content">
-                <div class="moves">
-                    <div id="box-1" class="move-1 square">
-                        <div class="icon-1"></div>
-                    </div>
-                    <div id="box-2" class="move-2 square">
-                        <div class="icon-2"></div>
-                    </div>
-                    <div id="box-3" class="move-3 square">
-                        <div class="icon-3"></div>
-                    </div>
-                    <div id="box-4" class="move-4 square">
-                        <div class="icon-4"></div>
-                    </div>
-                    <div id="box-5" class="move-5 square">
-                        <div class="icon-5"></div>
-                    </div>
-                    <div id="box-6" class="move-6 square">
-                        <div class="icon-6"></div>
-                    </div>
-                    <div id="box-7" class="move-7 square">
-                        <div class="icon-7"></div>
-                    </div>
-                    <div id="box-8" class="move-8 square">
-                        <div class="icon-8"></div>
-                    </div>
-                    <div id="box-9" class="move-9 square">
-                        <div class="icon-9"></div>
-                    </div>
-                    <div id="box-10" class="move-10 square">
-                        <div class="icon-10"></div>
-                    </div>
-                    <div id="box-11" class="move-11 square">
-                        <div class="icon-11"></div>
-                    </div>
-                    <div id="box-12" class="move-12 square">
-                        <div class="icon-12"></div>
-                    </div>
-                    <div id="box-13" class="move-13 square">
-                        <div class="icon-13"></div>
-                    </div>
-                    <div id="box-14" class="move-14 square">
-                        <div class="icon-14"></div>
-                    </div>
-                </div>
+                {% include 'sitesinais/partials/dashboard/last_14.html' %}
             </div>
             <div class="row"></div>
             <div class="trial-page">
-                <div class="sinais-online">
-                    <div class="proteger-branco">
-                        <h2>Proteger no Branco</h2>
-                        <div class="box">
-                            <h2>PROTEGER</h2>
-                        </div>
-                    </div>
-                    <div class="sinal">
-                        <div class="sub-title">
-                            <h2>Bot Jogou:</h2>
-                            <h5>Horario da Jogada: 15:15</h5>
-                        </div>
-                        <div class="box-move"></div>
-                    </div>
-                </div>
-                <div class="estatisticas">
-                    <div class="result-colors">
-                        <h2>Resultado por Cor</h2>
-                        <div class="value-colors">
-                            <div class="value-black"><h2>183x</h2></div>
-                            <div class="value-red"><h2>150x</h2></div>
-                            <div class="value-white"><h2>35x</h2></div>
-                        </div>
-                    </div>
-                    <div class="row"></div>
-                    <div class="result-all">
-                        <div class="acertos">
-                            <div class="result-titles">
-                                <div class="win-title">
-                                    <h2>Win</h2>
-                                </div>
-                                <div class="white-title">
-                                    <h2>White</h2>
-                                </div>
-                                <div class="loss-title">
-                                    <h2>Loss</h2>
-                                </div>
-                            </div>
-                            <div class="box-results">
-                                <div class="box-win">
-                                    <h2>183</h2>
-                                </div>
-                                <div class="box-white">
-                                    <h2>19</h2>
-                                </div>
-                                <div class="box-loss">
-                                    <h2>13</h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% include 'sitesinais/partials/dashboard/signals.html' %}
+                {% include 'sitesinais/partials/dashboard/result.html' %}
             </div>
             <div class="row"></div>
         </section>

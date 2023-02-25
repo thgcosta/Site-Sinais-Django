@@ -103,7 +103,7 @@ def confirmacao(request):
 def trial(request):
     apear_button = True
     return render(request, 'sitesinais/pages/trial.html',
-                  {'apear_button': apear_button})
+                  {'apear_button': apear_button, })
 
 
 def logout_view(request):
