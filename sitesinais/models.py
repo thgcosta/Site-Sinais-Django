@@ -48,14 +48,34 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     confirmation = models.IntegerField(blank=True, null=True)
-    is_trusty = models.BooleanField(default=False)  # campo na tabela para fazer a confirmação do cadastro!
+    # campo na tabela para fazer a confirmação do cadastro!
+    is_trusty = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     objects = UserManager()
 
     USERNAME_FIELD = 'email'  # email como chave primaria para login
-    REQUIRED_FIELDS = ['first_name', 'last_name']  # campos que são obrigatorios para cadastro junto com a chave primaria
+    # campos que são obrigatorios para cadastro junto com a chave primaria
+    REQUIRED_FIELDS = ['first_name', 'last_name']
 
     def __str__(self):
         return self.email
+
+
+class Dados(models.Model):
+    number = models.IntegerField()
+    date = models.DateTimeField(auto_now_add=True)
+    background = models.CharField(max_length=255)
+
+    class Meta:
+        db_table = 'dados'
+
+
+class Sinais(models.Model):
+    status = models.CharField(max_length=255, blank=True, null=True)
+    background = models.CharField(max_length=255)
+    date = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        db_table = 'sinais'

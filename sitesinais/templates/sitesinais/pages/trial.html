@@ -10,25 +10,73 @@
 
 <body>
     <section class="container">
-
-        {% include 'sitesinais/partials/header.html' %}
-
-        <section class="trial-content">
-            <div class="moves-content">
-                {% include 'sitesinais/partials/dashboard/last_14.html' %}
+        <section class="container-header">
+            <div class="logo"><a>Tiro Certo</a></div>
+            <div class="sinais-title">
+                <h2>Sinais<span>On</span>line</h2>
             </div>
+                <div class="buttons">
+                    <form action="{% url 'sitesinais:logout' %}" method="POST">{% csrf_token %}
+                        <button class="btn-login logout" type="submit">Sair</button>
+                    </form>
+                    <div class="btn-register" style="display:None;">
+                        <a href="{% url 'sitesinais:cadastro' %}">Comprar Acesso</a>
+                    </div>
+                </div>
+        </section>
+        <div class="row"></div>
+        <div class="moves-content">
+            <div class="moves" id="results-container">
+                {% include 'sitesinais/partials/dashboard/latest_results.html' %}
+            </div>
+        </div>
+        <section class="trial-content">
             <div class="row"></div>
             <div class="trial-page">
                 {% include 'sitesinais/partials/dashboard/signals.html' %}
                 {% include 'sitesinais/partials/dashboard/result.html' %}
             </div>
-            <div class="row"></div>
         </section>
-
         {% include 'sitesinais/partials/footer.html' %}
         
     </section>
 </body>
-<script src="js/getDB.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+    <script>
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
 
+        var pusher = new Pusher('9652881ff8a799315f76', {
+        cluster: 'sa1'
+        });
+
+        var channel = pusher.subscribe('sitesinais');
+        channel.bind('sinaispage', function(data) {
+            console.log(data); // vai pro console os dados da variavel data que vem do backend
+            var last_14 = data.last_14; //dados da variavel data que a chave se chama last_14 podendo ter mais keys em data
+            var html = '';
+            for (var i = 0; i < last_14.length; i++) {
+                var item = last_14[i];
+                var background = item.background;
+                var number = item.number;
+                html += '<div id="box" class="move square" style="background: ' + background + '">';
+                html += '<div class="icon-1">' + number + '</div>';
+                html += '</div>';
+            }
+            $('#results-container').html(html); // atualiza o conteudo do id results-container
+        });
+
+        channel.bind('sinaisbot', function(data) {
+            console.log(data);
+            var h1Value = data.h1;
+            var backgroundValue = data.background;
+            var dateValue = data.date;
+
+            document.getElementById('h1-sinais').innerHTML = h1Value;
+            var boxStyle = document.getElementById('box-sinais')
+            boxStyle.style.backgroundColor = backgroundValue;
+            document.getElementById('h2-sinais').innerHTML = dateValue;
+        })
+    </script>
 </html>

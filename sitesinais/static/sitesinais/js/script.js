@@ -1,25 +1,21 @@
-const getDB = () => {
-    fetch("http://localhost:5000/api/getdb")
-    .then(resposta => resposta.json())
-    .then(data => {
-        for (let i = 0; i < 14 + 1; i++) {
-            const box = document.querySelector(`#box-${i + 1}`);
-            box.style.backgroundColor = data[i].backgroundColor;
-        }
-    });
-};
-
-
-
-const getestatics = () => {
-    fetch("http://localhost:5000/api/estatics")
-    .then(resposta1 => resposta1.json())
-    .then(data =>{
-        document.querySelector('#valuewhite').innerHTML = data.white + 'x';
-        document.querySelector('#valueblack').innerHTML = data.black + 'x';
-        document.querySelector('#valuered').innerHTML = data.red + 'x';
-    })
-}
-
-setInterval(getDB, 4000)
-setInterval(getestatics, 5000)
+$(document).ready(function(){
+    setInterval(function(){
+        $.ajax({
+            url: '{% url "get_last_results" %}',
+            success: function(data) {
+                // Atualiza o conteudo do template com os novos dados
+                var html = '';
+                for (var i = 0; i < data.lenght; i++) {
+                    html += '<div id="box" class="move square" style="background: ' + data[i].background + ';">';
+                    if (data[i].number == 0) {
+                        html += '<div class="icon-1"></div>';
+                    } else {
+                        html += '<div class="icon-1">' + data[i].number + '</div>';
+                    }
+                    html += '</div>';
+                }
+                $('.moves').html(html);
+            }
+        });
+    }, 7000); // Solicita a cada 7 segundos
+});

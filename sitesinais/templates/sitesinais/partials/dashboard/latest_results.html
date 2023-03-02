@@ -1,0 +1,9 @@
+{% for result in results %}
+  <div id="box" class="move square" style="background: {{ result.background }};">
+    {% if result.number == 0 %}
+      <div class="icon-1"></div>
+    {% else %}
+      <div class="icon-1">{{ result.number }}</div>
+    {% endif %}
+  </div>
+{% endfor %}

@@ -312,19 +312,18 @@ body{
     margin: auto;
 }
 
-.container .trial-content .moves-content{
+.moves-content{
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 10px;
     border: 1px solid var(--shadow-color);
     background: var(--bg--black-700);
 }
 
-.container .trial-content .moves-content .moves{
-    width: 90%;
+.moves{
+    width: 99%;
     height: auto;
     display: flex;
     justify-content: center;
@@ -337,11 +336,9 @@ body{
     z-index: 101;
     background: var(--bg--black-700);
     border-radius: 10px;
-    border: 1px solid var(--shadow-color);
 }
 
 .trial-page .estatisticas{
-    float: left;
     flex: 0 0 40%;
     width: 40%;
     padding: 20px 0;
@@ -529,7 +526,6 @@ body{
     float: right;
     flex: 0 0 60%;
     width: 60%;
-    padding: 20px 0;
     height: auto;
     border-radius: 10px;
     background: var(--bg--black-700);
@@ -610,63 +606,55 @@ body{
     border-radius: 10px;
 }
 
-.move-1{
-    background-color: var(--bg-white);
+.move{
+    
 }
 
-.move-2{
-    background-color: var(--bg-black);
+.icon-1 {
+    
+    padding-top: 100%;
+    color: #ffffff;
+
 }
 
-.move-3{
-    background-color: var(--bg-black);
+.sinais-bot{
+    float: right;
+    flex: 0 0 60%;
+    width: 60%;
+    padding: 20px 0;
+    height: auto;
+    display: block;
 }
 
-.move-4{
-    background-color: var(--bg-red);
+.sinais-bot h1{
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    color: var(--skin-white);
+    font-size: x-large;
 }
 
-.move-5{
-    background-color: var(--bg-red);
+.sinais-bot h2{
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: medium;
+    color: var(--skin-white);
 }
 
-.move-6{
-    background-color: var(--bg-red);
-}
-
-.move-7{
-    background-color: var(--bg-black);
-}
-
-.move-8{
-    background-color: var(--bg-red);
-}
-
-.move-9{
-    background-color: var(--bg-black);
-}
-
-.move-10{
-    background-color: var(--bg-red);
-}
-
-.move-11{
-    background-color: var(--bg-white);
-}
-
-.move-12{
-    background-color: var(--bg-red);
-}
-
-.move-13{
-    background-color: var(--bg-red);
-}
-
-.move-14{
-    background-color: var(--bg-black);
+.box-bot{
+    width: 40%;
+    margin: 0 auto;
+    height: 0;
+    padding-bottom: 40%;
+    border-radius: 10px;
+    border: 2px solid var(--bg--black-900);
 }
 
 .main-footer {
+    bottom: 0;
+    position: relative;
+    margin-top: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -754,10 +742,6 @@ body{
         width: 50%;
     }
 
-    .trial-page{
-        height: 500px;
-    }
-
     .proteger-branco .box h2{
         font-size: 20px;
     }
@@ -784,10 +768,16 @@ body{
 
     .trial-page{
         display: block;
+        height: auto;
+    }
+
+    .sinais-bot{
+        width: 100%;
     }
 
     .trial-page .sinais-online{
         width: 100%;
+        float: none;
     }
 
     .trial-page .estatisticas{

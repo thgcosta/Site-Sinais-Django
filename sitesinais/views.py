@@ -1,14 +1,17 @@
 import random
 
+import pusher
 from decouple import config
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import redirect, render
+from django.template.loader import render_to_string
 
 from .forms import CadastroForm
-from .models import CustomUser
+from .models import CustomUser, Dados, Sinais
 
 
 def home(request):
@@ -74,7 +77,7 @@ def cadastro(request):
         else:
             return render(request, 'sitesinais/pages/cadastro.html',
                           {'form': form,
-                           'apear_register': apear_register})
+                           'apear_register': apear_register, })
 
 
 def confirmacao(request):
@@ -102,10 +105,29 @@ def confirmacao(request):
 @login_required(login_url='/')
 def trial(request):
     apear_button = True
+    results = Dados.objects.order_by(
+        '-id')[:14].values('number', 'date', 'background')
+    context = {'results': results}
     return render(request, 'sitesinais/pages/trial.html',
-                  {'apear_button': apear_button, })
+                  context=context,
+                  )
 
 
 def logout_view(request):
     logout(request)
     return redirect('/')
+
+
+def get_last_results(request):
+    results = Dados.objects.order_by(
+        '-id')[:14].values('number', 'date', 'background')
+    html = render_to_string(
+        'sitesinais/partials/dashboard/latest_results.html', {'results': results})
+    return HttpResponse(html)
+
+
+def get_signal(request):
+    results = Sinais.objects.order_by(
+        '-id')[:1].values('id', 'background', 'date')
+    dados = {'dados': list(results)}
+    return JsonResponse(dados)
