@@ -11,7 +11,7 @@ from django.shortcuts import redirect, render
 from django.template.loader import render_to_string
 
 from .forms import CadastroForm
-from .models import CustomUser, Dados, Sinais
+from .models import CustomUser, Dados
 
 
 def home(request):
@@ -107,7 +107,17 @@ def trial(request):
     apear_button = True
     results = Dados.objects.order_by(
         '-id')[:14].values('number', 'date', 'background')
-    context = {'results': results}
+    results_white = Dados.objects.filter(background=';')
+    quant_white = results_white.count()
+    results_red = Dados.objects.filter(background='#CD1010;')
+    quant_red = results_red.count()
+    results_black = Dados.objects.filter(background='black;')
+    quant_black = results_black.count()
+    context = {'results': results,
+               'white': quant_white,
+               'red': quant_red,
+               'black': quant_black,
+               }
     return render(request, 'sitesinais/pages/trial.html',
                   context=context,
                   )
@@ -124,10 +134,3 @@ def get_last_results(request):
     html = render_to_string(
         'sitesinais/partials/dashboard/latest_results.html', {'results': results})
     return HttpResponse(html)
-
-
-def get_signal(request):
-    results = Sinais.objects.order_by(
-        '-id')[:1].values('id', 'background', 'date')
-    dados = {'dados': list(results)}
-    return JsonResponse(dados)
